@@ -1,139 +1,126 @@
-# MTL-XF-029 — Required deliverables
+# MTL-XF-029 — Required deliverables and metric contracts
 
-**Commissioned decision:** Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
+**Decision:** Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?  
+**Business acceptance:** Director of Hospital Planning & Service Transformation  
+**Core scope:** Retain the agreed combined April 2018–March 2026 CSV as the intended input, subject to identity validation. The official March 2026 release separately lists historical 2018/19–2024/25 and 2025/26 M13 MAR CSVs; register these as a two-file fallback if the agreed combined file cannot be validated. Core analysis is at the verified national activity-stream grain. Provider detail and outpatient fields must be confirmed in the acquired MAR schema before inclusion.
 
-All locations below refer to the team's delivery repository. The master repository defines the requirements and contains no completed analysis. Owners are assigned from [the project roles](PROJECT_BRIEF.md).
+All artefact locations refer to the team repository. Deliver the core before optional extensions. [The source register](../data/SOURCE_REGISTER.md) documents evidence status; required field support is a G1 release condition.
 
-## D1 — Discovery & decision requirements
+## D1 — Discovery & requirements
 
-**Due:** Week 1  
-**Team artefact location:** `docs/01-discovery/`
+**Due:** Week 1 · **Location:** `docs/01-discovery/` · **Owner:** Business Analyst
 
-Decision statement; stakeholder map; as-is reporting to investigation-review process; at least eight prioritised requirements. Answer these questions: How have elective and non-elective activity changed across comparable months? How does outpatient activity differ from admitted care? Where are sustained changes visible relative to a declared baseline? What do pandemic effects, revisions and provider changes do to the interpretation? What additional beds, waiting-list and workforce evidence is required before a capacity decision?
+Map the monthly hospital activity planning review, stakeholder needs, current reporting failures and target decision. Eight prioritised requirements must cover the business questions, scope gates and usable outputs.
 
-**Acceptance evidence:** All requirements have an owner, priority, deliverable and test ID; domain analyst approves scope.
+**Pass evidence:** Each requirement has an accountable user, artefact, test and acceptance owner.
 
-## D2 — Governed sources & cohort
+## D2 — Sources, governance & cohort contract
 
-**Due:** Week 2  
-**Team artefact location:** `docs/02-data-governance/; data/`
+**Due:** Week 2 · **Location:** `data/; docs/02-data-governance/` · **Owner:** Data Governance Analyst
 
-Freeze the agreed HES Monthly Activity Report historical CSV for April 2018–March 2026. Inspect provisional/final status, monthly versus year-to-date measures and actual provider/geographic dimensions. Use only supported breakdowns; this is the final HES project, replacing the earlier A&E concept. Register exact files, metadata, licences, checksums, coverage and critical fields; record rejection of unavailable dimensions.
+Complete the source-to-deliverable support matrix and classify core, fallback and optional inputs. Retain the agreed combined April 2018–March 2026 CSV as the intended input, subject to identity validation. The official March 2026 release separately lists historical 2018/19–2024/25 and 2025/26 M13 MAR CSVs; register these as a two-file fallback if the agreed combined file cannot be validated. Core analysis is at the verified national activity-stream grain. Provider detail and outpatient fields must be confirmed in the acquired MAR schema before inclusion.
 
-**Acceptance evidence:** 100% of inputs registered; no claimed freeze until acquisition evidence exists.
+**Pass evidence:** Every used input has provenance, exact version/coverage, licence evidence and SHA-256; conditional scope cannot be signed off without supporting fields.
 
-## D3 — Reproducible analytical model
+## D3 — Reproducible model & ingestion
 
-**Due:** Week 3  
-**Team artefact location:** `src/; sql/; docs/03-data-model/`
+**Due:** Week 3 · **Location:** `src/; sql/; docs/03-data-model/` · **Owner:** Data Engineer
 
-Reporting month × activity stream × published measure × available provider/geography/category × revision status. Spell, episode, admission, attendance and patient measures are distinct. If data is cumulative, derive monthly increments only within the same valid financial-year series. Deliver load, type checks, hierarchy handling, lineage, exclusions and environment instructions.
+Implement raw preservation, selection, schema checks, curated facts and dimensions. Reporting month × activity stream × published measure × available provider/geography/category × revision status. Spell, episode, admission, attendance and patient measures are distinct. If data is cumulative, derive monthly increments only within the same valid financial-year series.
 
-**Acceptance evidence:** A second member regenerates equivalent curated outputs from identical inputs; no unexplained duplicate analytical keys.
+**Pass evidence:** Zero unexplained duplicate keys or join inflation; every input row accounted for as retained/excluded/quarantined.
 
-## D4 — Quality & reconciliation
+## D4 — Quality, source reconciliation & exceptions
 
-**Due:** Week 3  
-**Team artefact location:** `docs/04-data-quality/; tests/`
+**Due:** Week 3 · **Location:** `tests/; docs/04-data-quality/` · **Owner:** Independent reviewer + domain specialist
 
-Profile missingness, suppression, valid values, keys and join coverage. Reconcile five month/stream values and inspect cumulative versus monthly status. Test financial-year reset when deriving increments from cumulative values. Show a missing month invalidates a twelve-month total. Verify dashboard labels preserve episodes/spells/attendances and contain no inferred occupancy or A&E waiting metric.
+Execute source, denominator, missingness, boundary and linkage checks against the risk 'Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison.'
 
-**Acceptance evidence:** Every input row is accounted for as retained, excluded or quarantined; five published cells reconcile within declared rounding.
+**Pass evidence:** Reconcile five source values from at least two periods or segments; retain source coordinates, precision and explanations for non-additive totals.
 
-## D5 — KPI catalogue
+## D5 — Governed metric catalogue
 
-**Due:** Week 4  
-**Team artefact location:** `docs/05-kpi-catalogue/`
+**Due:** Week 4 · **Location:** `docs/05-kpi-catalogue/` · **Owner:** Domain specialist + Data Governance Analyst
 
-Define all 8 measures listed below with formula, grain, denominator, unit, source fields, exclusions, owner, refresh and limitations.
+Implement the 8 metric contracts below; distinguish unconditional core metrics from gated extensions.
 
-**Acceptance evidence:** 100% headline metrics trace to source fields and tested transformations; conditional unavailable measures are explicitly marked.
+**Pass evidence:** Each core metric has purpose, raw fields, formula, grain, denominator/unit, missing/zero handling, owner, refresh and test; conditional items have explicit eligibility or unavailable status.
 
-## D6 — Domain analytical assessment
+## D6 — Domain assessment
 
-**Due:** Week 5  
-**Team artefact location:** `analysis/; docs/06-analysis/`
+**Due:** Week 5 · **Location:** `analysis/; docs/06-analysis/` · **Owner:** Domain analyst
 
 Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status. Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 
-**Acceptance evidence:** At least five evidence-backed findings state period, population, comparison, magnitude, uncertainty and limitation; negative findings count.
+**Pass evidence:** At least five supported findings answer the five questions or document a genuine evidence gap; each includes magnitude, scope, comparison and limitation.
 
-## D7 — Investigation decision framework
+## D7 — Investigation framework & scenarios
 
-**Due:** Week 6  
-**Team artefact location:** `docs/07-decision-framework/`
+**Due:** Week 6 · **Location:** `docs/07-decision-framework/` · **Owner:** Director of Hospital Planning & Service Transformation (business acceptance)
 
-Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses. Record eligibility, thresholds, weights if used, reason codes and manual review triggers.
+Compare supported streams using same-month year-on-year changes and a declared baseline index, requiring at least three contiguous comparable monthly flows for persistence. Show a recent baseline and, where valid, a pre-pandemic comparator separately. The investigation list may contain fewer than ten streams and is never padded with invented provider cases.
 
-**Acceptance evidence:** Every shortlisted case has metrics, rationale, owner and evidence gaps; at least two scenarios compared; fewer than ten is valid where evidence is insufficient.
+**Pass evidence:** Publish eligibility, component definitions, scenario differences and up to ten supported cases; every case names a service role, evidence request and review trigger.
 
-## D8 — BI decision-support product
+## D8 — Decision-support BI
 
-**Due:** Draft Week 6; final Week 7  
-**Team artefact location:** `dashboard/`
+**Due:** Draft Week 6; final Week 7 · **Location:** `dashboard/` · **Owner:** BI Developer
 
-Executive overview answering 'Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?' plus diagnostic and data-quality views; visible periods, units, denominator notes, resettable filters and accessible labels.
+Build overview, diagnostic and quality pages for the monthly hospital activity planning review. Show period, units, definitions, missingness and core/extension status.
 
-**Acceptance evidence:** Five headline measures reconcile; every filter tested; export screenshots/PDF plus reproducible build or free access instructions.
+**Pass evidence:** Five headline values reconcile; every visible filter and reset tested; accessible static export plus free review/build path.
 
-## D9 — Independent assurance & UAT
+## D9 — Assurance & simulated UAT
 
-**Due:** Week 7  
-**Team artefact location:** `docs/08-assurance-uat/`
+**Due:** Week 7 · **Location:** `docs/08-assurance-uat/` · **Owner:** Independent reviewer
 
-At least ten scenarios including the four project-specific tests below; requirement-to-test matrix, expected/actual evidence, defect log and simulated stakeholder feedback.
+Execute DT1–DT10 below, plus any tool-specific calculations and filter tests. Record expected/actual evidence, requirement links and defects.
 
-**Acceptance evidence:** No unresolved critical/high defect; accepted lower-severity limitations have a named reviewer and explicit impact.
+**Pass evidence:** All ten mandatory domain cases evidenced; no critical/high issue remains; accepted lower-impact limitations have named review.
 
 ## D10 — Technical & operational handover
 
-**Due:** Week 8  
-**Team artefact location:** `docs/09-technical-handover/`
+**Due:** Week 8 · **Location:** `docs/09-technical-handover/` · **Owner:** Data Engineer + a second-member reviewer
 
-Clean setup, architecture, frozen input manifest, run/refresh steps, output checks, troubleshooting and change-control process for NHS Hospital Activity, Demand, Flow & Capacity Pressure Intelligence.
+Provide environment, immutable manifest, end-to-end run, output checks, troubleshooting and refresh/change process.
 
-**Acceptance evidence:** Another member reproduces the core outputs without undocumented edits and records environment, duration and discrepancies.
+**Pass evidence:** A second member regenerates equivalent core outputs without undocumented edits and records checks, environment, duration and result.
 
-## D11 — Executive recommendation
+## D11 — Executive briefing & presentation
 
-**Due:** Week 8  
-**Team artefact location:** `deliverables/`
+**Due:** Week 8 · **Location:** `deliverables/` · **Owner:** Business Analyst + specialist service roles
 
-Maximum two-page briefing and 15–20 minute presentation: commissioned decision, five findings, investigation shortlist, sensitivity, missing evidence, responsibilities and next review.
+Deliver maximum two-page briefing and 15–20 minute presentation to Director of Hospital Planning & Service Transformation: decision, five findings, scenario comparison, investigation actions, evidence gaps and next review.
 
-**Acceptance evidence:** Every quantitative claim links to an artefact/metric; no unsupported causal, policy or operational guarantee.
+**Pass evidence:** Every numeric claim links to tested evidence; explicitly show a case where action is not yet supported.
 
 ## D12 — Contribution & delivery record
 
-**Due:** Weekly; final Week 8  
-**Team artefact location:** `CONTRIBUTIONS.md; delivery issues/PRs`
+**Due:** Weekly; final Week 8 · **Location:** `CONTRIBUTIONS.md` · **Owner:** Delivery Lead
 
-Record who delivered and reviewed each MTL-XF-029 work package, including domain, governance, engineering, BI and assurance contributions.
+Link actual authored work, reviews, issues/PRs/commits and presentation/handover contributions for every member.
 
-**Acceptance evidence:** Every member links to substantive artefacts and review/presentation evidence; commit count alone is insufficient.
+**Pass evidence:** All responsibilities have owners and evidence; commit count alone is insufficient.
 
-## Required KPI definitions
+## Metric contracts — authoritative definitions
 
-| Metric | Required definition / calculation |
+| Metric | Definition / support condition |
 | --- | --- |
 | Elective activity | Publisher-defined elective admissions/spells/episodes, labelled precisely with measure. |
 | Non-elective activity | Publisher-defined non-elective activity using a separate compatible category. |
-| Outpatient activity | Published attendances/appointments by available type; keep distinct from admitted care. |
+| Outpatient activity — conditional extension | Required only when the acquired MAR fields support it or a compatible official extension is registered; label appointments versus attendances. |
 | Year-on-year activity change | 100 × (monthly activity / corresponding prior-year month − 1), with positive comparable base. |
 | Trailing twelve-month activity | Sum of twelve genuine contiguous monthly flows; never sum year-to-date cumulative values. |
 | Activity mix | 100 × compatible activity component / matching stream total; do not divide outpatient attendances by inpatient episodes. |
 | Baseline index | 100 × current activity / declared comparable baseline; label pandemic and reporting breaks. |
-| Revision/coverage flag | Available valid months and provisional/final status by stream; display missingness and provider continuity. |
+| Revision/coverage flag | Valid monthly-flow coverage and provisional/snapshot status by verified national stream; provider continuity only for a registered provider extension. |
 
-For every metric record business purpose, formula, source fields, grain, unit, numerator/denominator, exclusions, suppression, zero-base behaviour, owner, refresh and test evidence. Do not populate conditional metrics from invented fields.
+For each metric add source ID and actual raw fields, business purpose, formula, grain, valid population, unit, numerator/denominator, hierarchy, suppression/zero/missing handling, owner, refresh and test evidence. Verify source rounding before setting a reconciliation tolerance. A conditional item is not silently promoted into core; a core requirement is not silently waived.
 
-## Mandatory domain scenarios
+## Project-specific outcomes
 
-1. Reconcile five month/stream values and inspect cumulative versus monthly status.
-2. Test financial-year reset when deriving increments from cumulative values.
-3. Show a missing month invalidates a twelve-month total.
-4. Verify dashboard labels preserve episodes/spells/attendances and contain no inferred occupancy or A&E waiting metric.
+1. Every required output states its precise activity unit and whether the input is monthly or cumulative.
+2. National core results remain usable without provider data or an outpatient extension.
+3. Every capacity hypothesis identifies the missing bed, workforce, waiting-list or case-mix evidence.
 
-## Review gates
-
-Week 2: cohort and source approval. Week 4: model, DQ and metrics approval. Week 6: analytical and decision-framework review. Week 8: UAT, independent rerun and final panel review. Record reviewer, date, artefact version and decision at every gate.
+See [DT1–DT10 and investigation rules](ACCEPTANCE_CRITERIA.md) for worked pass/fail cases. Source schemas, specific period selections and reference versions must be signed at G1. Keep calculation definitions here; other guidance pages link to this contract rather than maintaining competing copies.

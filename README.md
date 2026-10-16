@@ -1,130 +1,82 @@
 # MTL-XF-029 — NHS Hospital Activity, Demand, Flow & Capacity Pressure Intelligence
 
-**Mettelo Project Studio** · Cross-Functional · Master specification  
+**Mettelo Project Studio** · Cross-Functional · Master project specification  
 **Client:** Confidential NHS Hospital Planning & Service Transformation Directorate  
+**Accountable simulated executive:** Director of Hospital Planning & Service Transformation  
 **Sector:** NHS / Hospital Activity / Service Planning  
-**Status:** Pre-launch; documentation ready, data acquisition/freeze pending  
-**Recommended team:** 6–8 people · **Delivery window:** 8 weeks  
-**Master repository:** `Mettelo/MTL-XF-029-NHS-Hospital-Activity-Demand-Flow-Capacity-Intelligence`
+**Team:** 6–8 people · **Window:** 8 weeks  
+**Status:** documentation revised; file acquisition and cohort freeze pending  
+**Review cadence:** monthly hospital activity planning review
 
-> This is a **simulated confidential-client engagement** using official public/open data. The client label is fictional and intentionally anonymous. Do not imply a real external Mettelo customer, employment by that client, privileged access or confidential source data. Public source statistics remain public; the engagement framing does not make them confidential.
+> This is a **simulated confidential-client engagement using official public/open data**. Client and stakeholder role labels describe a fictional engagement; do not claim a real external Mettelo customer, employment, endorsement or privileged data access. No raw data is uploaded by this specification update.
 
-## Business challenge
+## Business problem
 
-**NHS Hospital Activity, Demand, Flow & Capacity Pressure Intelligence.** An NHS planning directorate needs to understand how elective/non-elective activity, admissions and outpatient demand are changing over time and which areas show sustained pressure rather than short-term variation. This will support operational and service-planning reviews.
-
-Current reporting fragments the evidence needed for a repeatable management review. The team must explain which signals are reliable, which comparisons are valid and where further investigation is needed. No budget, operational failure or improvement outcome is asserted as an observed client fact.
+The planning directorate must decide which activity streams warrant investigation when volumes differ from prior periods. Episodes, admissions and outpatient attendances are not interchangeable, and monthly values may be confused with year-to-date snapshots. Rising activity could reflect throughput, coding, case mix or demand; it does not on its own prove that bed capacity is insufficient.
 
 ## Commissioned decision
 
 > Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
 
-The product supports a simulated stakeholder review. A dashboard alone is insufficient: the recommendation must be traceable to governed definitions, a reproducible model, reconciled analysis and a transparent investigation framework.
+## Practical use
 
-## Business questions
+At the monthly meeting, the Director reviews a three-month sustained change in elective or non-elective activity and compares it with the declared baseline. The Information Steward checks whether the measure is a true monthly flow and whether a revision explains the change. The planning team then requests waiting-list, workforce or bed evidence before diagnosing a capacity constraint. Provider-specific recommendations appear only if the approved file actually contains valid provider detail.
 
-- How have elective and non-elective activity changed across comparable months?
-- How does outpatient activity differ from admitted care?
-- Where are sustained changes visible relative to a declared baseline?
-- What do pandemic effects, revisions and provider changes do to the interpretation?
-- What additional beds, waiting-list and workforce evidence is required before a capacity decision?
+The full [business context](project/BUSINESS_CONTEXT.md) names operational stakeholders, decisions, risks and proposed benefit measures.
 
-## Approved data and cohort
-
-NHS England HES Monthly Activity Report, full historical series Apr 2018–Mar 2026. It is a single 22 MB CSV, much more durable and reproducible than relying on monthly A&E file URLs.
-
-Freeze the agreed HES Monthly Activity Report historical CSV for April 2018–March 2026. Inspect provisional/final status, monthly versus year-to-date measures and actual provider/geographic dimensions. Use only supported breakdowns; this is the final HES project, replacing the earlier A&E concept.
-
-Exact copyable URLs and acquisition gates are in [SOURCE_REGISTER.md](data/SOURCE_REGISTER.md). No raw data is uploaded by this build. Source coverage and size statements inherited from the agreement are expected values until controlled acquisition verifies them; current URLs are not a substitute for a frozen file manifest.
-
-## What the team must build
+## What must be delivered
 
 1. Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status.
 2. Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 3. Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses.
 
-Produce the full D1–D12 delivery pack: discovery, governance, ingestion/model, quality, KPI catalogue, analysis, decision framework, BI, assurance/UAT, handover, executive briefing and contribution record. [Deliverables](project/DELIVERABLES.md) defines locations, dates and evidence for each.
+The complete D1–D12 pack includes discovery, source governance, ingestion/model, quality, metric catalogue, analysis, investigation scenarios, BI, assurance/UAT, independent handover, executive briefing and contribution evidence. A dashboard by itself does not satisfy the commission.
 
-## Core measures
+## Fixed core and optional work
 
-| Metric | Required definition / calculation |
-| --- | --- |
-| Elective activity | Publisher-defined elective admissions/spells/episodes, labelled precisely with measure. |
-| Non-elective activity | Publisher-defined non-elective activity using a separate compatible category. |
-| Outpatient activity | Published attendances/appointments by available type; keep distinct from admitted care. |
-| Year-on-year activity change | 100 × (monthly activity / corresponding prior-year month − 1), with positive comparable base. |
-| Trailing twelve-month activity | Sum of twelve genuine contiguous monthly flows; never sum year-to-date cumulative values. |
-| Activity mix | 100 × compatible activity component / matching stream total; do not divide outpatient attendances by inpatient episodes. |
-| Baseline index | 100 × current activity / declared comparable baseline; label pandemic and reporting breaks. |
-| Revision/coverage flag | Available valid months and provisional/final status by stream; display missingness and provider continuity. |
+**Core:** Retain the agreed combined April 2018–March 2026 CSV as the intended input, subject to identity validation. The official March 2026 release separately lists historical 2018/19–2024/25 and 2025/26 M13 MAR CSVs; register these as a two-file fallback if the agreed combined file cannot be validated. Core analysis is at the verified national activity-stream grain. Provider detail and outpatient fields must be confirmed in the acquired MAR schema before inclusion.
 
-## Cross-functional ownership
+**Extensions:** Provider/catchment comparison requires a registered provider-level source; outpatient metrics require verified MAR fields or a separately registered provisional-HES source. A&E waiting times, bed occupancy, unmet demand and capacity sufficiency are outside the activity core. Scope must not be silently shifted to another NHS series.
 
-| Accountable role | Project responsibility and evidence |
-| --- | --- |
-| Business Analyst / Delivery Lead | Own the commissioned decision for Confidential NHS Hospital Planning & Service Transformation Directorate; record at least eight prioritised requirements, each linked to a deliverable and test; maintain weekly scope and decision logs. |
-| Data Governance Analyst | Register every 029 input and critical field; approve the frozen cohort, licence evidence, glossary and 100% headline-KPI lineage before analysis. |
-| Data Engineer | Implement the stated 029 analytical grain, ingestion and exclusions; deliver a clean rerun with row-count/checksum evidence and no unexplained key duplicates. |
-| BI Developer | Build executive, diagnostic and quality views for the commissioned decision; reconcile at least five 029 dashboard measures and test every visible filter. |
-| NHS Activity & Performance Analyst | Approve activity units and revision status, and reconcile five month/stream measures. |
-| Hospital Planning & Operations Analyst | Write up to ten activity investigation cases with missing bed, workforce and waiting-list evidence. |
-| Clinical Data Assurance Analyst | Test cumulative resets, provider continuity and distinction between episodes and patients. |
+Source support is checked at the Week 2 gate. A required output is blocked until its fields and cohort are verified; it cannot pass acceptance through a generic “data unavailable” disclaimer. An explicitly optional extension may remain unavailable with a reason. See [exact source URLs and verification evidence](data/SOURCE_REGISTER.md).
 
-Roles may be combined by a smaller team, but each responsibility needs a named owner. A different member reviews critical calculations and final evidence wherever practical.
+## Measurable project outcomes
 
-## Interpretation rules
+1. Every required output states its precise activity unit and whether the input is monthly or cumulative.
+2. National core results remain usable without provider data or an outpatient extension.
+3. Every capacity hypothesis identifies the missing bed, workforce, waiting-list or case-mix evidence.
+
+All headline metrics require field lineage; five source values and five BI measures must reconcile. DT1–DT10 must be executed, a second member must reproduce the core outputs, and no critical/high defect may remain. These assess delivery quality; real-world savings or service improvement are not claimed.
+
+## Investigation rules
+
+Compare supported streams using same-month year-on-year changes and a declared baseline index, requiring at least three contiguous comparable monthly flows for persistence. Show a recent baseline and, where valid, a pre-pandemic comparator separately. The investigation list may contain fewer than ten streams and is never padded with invented provider cases.
 
 - Activity volumes do not directly measure unmet demand, bed occupancy, waiting-time performance or capacity sufficiency.
 - HES episodes are not necessarily unique patients; do not relabel them.
 - Avoid summing cumulative snapshots, combining provisional/final series or silently bridging provider reorganisations.
 
-## Measurable success
+## Team and stakeholder ownership
 
-- All source files and transformations have provenance and licence evidence; approved inputs have SHA-256 manifests.
-- All headline metrics have tested definitions and source-field lineage.
-- At least five published values and five dashboard measures reconcile with declared source rounding.
-- At least five findings address the business questions and quantify materiality.
-- Up to ten investigation cases have evidence, reason codes, owners and limitations; at least two priority scenarios are compared.
-- At least ten UAT scenarios pass or have explicitly accepted low-impact limitations; no critical/high defect remains.
-- A second member reproduces the core outputs from the same frozen inputs.
+Director of Hospital Planning & Service Transformation approves business scope and the investigation recommendation. The Business Analyst, Data Governance Analyst, Data Engineer and BI Developer work with the specialist roles in the [project brief](project/PROJECT_BRIEF.md). Assign individual owners at kickoff and record substantive work and independent reviews in `CONTRIBUTIONS.md`.
 
-These are delivery acceptance thresholds, not promises of real-world service improvement. See [acceptance criteria](project/ACCEPTANCE_CRITERIA.md).
+## Delivery plan
 
-## Delivery sequence
-
-Weeks 1–2: decision requirements, source inspection and freeze approval. Weeks 3–4: model, reconciliation and KPI definitions. Weeks 5–6: analysis, investigation framework and BI draft. Weeks 7–8: UAT, independent rerun, briefing and handover.
+Weeks 1–2: decision requirements and verified cohort. Weeks 3–4: model, reconciliation and metric definitions. Weeks 5–6: analytical findings, alternative investigation scenarios and BI draft. Weeks 7–8: simulated UAT, independent rerun, executive briefing and handover.
 
 ## Start here
 
-1. Read the [project brief](project/PROJECT_BRIEF.md) and [business context](project/BUSINESS_CONTEXT.md).
-2. Review [deliverables](project/DELIVERABLES.md), [acceptance criteria](project/ACCEPTANCE_CRITERIA.md) and [governance](project/GOVERNANCE.md).
-3. Inspect the [data workspace](data/README.md), [source register](data/SOURCE_REGISTER.md), [raw guidance](data/raw/README.md), [reference guidance](data/reference/README.md) and [metadata guidance](data/metadata/README.md).
-4. Create `MTL-XF-029-<team-name>` under the **Mettelo GitHub organisation**, add each member's individual account and follow the [team repository standard](submission/TEAM_REPOSITORY_STANDARD.md).
-5. Use the [submission guide](submission/SUBMISSION_GUIDE.md) and [final submission template](submission/FINAL_SUBMISSION_TEMPLATE.md).
+1. [Project brief](project/PROJECT_BRIEF.md) and [business context](project/BUSINESS_CONTEXT.md).
+2. [D1–D12 deliverables and metric contracts](project/DELIVERABLES.md).
+3. [AC1–AC12 and DT1–DT10 acceptance tests](project/ACCEPTANCE_CRITERIA.md).
+4. [Governance and sign-off](project/GOVERNANCE.md).
+5. [Data workspace](data/README.md), [source register](data/SOURCE_REGISTER.md), [raw](data/raw/README.md), [reference](data/reference/README.md) and [metadata](data/metadata/README.md) guidance.
+6. [Team repository standard](submission/TEAM_REPOSITORY_STANDARD.md), [submission guide](submission/SUBMISSION_GUIDE.md) and [final template](submission/FINAL_SUBMISSION_TEMPLATE.md).
 
 ## Master and team repositories
 
-This master holds the challenge specification. Teams deliver their analysis and artefacts in their own Mettelo organisation repository. Do not submit team work by replacing this master specification. Use issues, branches, meaningful commits, PRs and reviews to demonstrate actual collaboration.
+This master repository holds the Mettelo-controlled specification. Create `MTL-XF-029-<team-name>` under the **Mettelo GitHub organisation** and add every member's individual account. Delivery analysis, code, tests, BI and contribution evidence belong in that team repository. Use issues, branches, meaningful commits, PRs and reviews where practical.
 
-## Specification map
-
-```text
-README.md
-project/README.md
-project/PROJECT_BRIEF.md
-project/BUSINESS_CONTEXT.md
-project/DELIVERABLES.md
-project/ACCEPTANCE_CRITERIA.md
-project/GOVERNANCE.md
-data/README.md
-data/SOURCE_REGISTER.md
-data/raw/README.md
-data/reference/README.md
-data/metadata/README.md
-submission/README.md
-submission/TEAM_REPOSITORY_STANDARD.md
-submission/SUBMISSION_GUIDE.md
-submission/FINAL_SUBMISSION_TEMPLATE.md
-```
+The required master areas are `project/`, `data/` (including raw/reference/metadata guidance) and `submission/`; [the documentation index](project/README.md) explains their authority and current revision.
 
 **Mettelo — Built for What’s Next**

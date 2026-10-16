@@ -1,23 +1,9 @@
-# MTL-XF-029 — Reference data and mappings
+# MTL-XF-029 — Reference mappings
 
-## Purpose
+References support the approved [model and cohort](../README.md). Do not assume a mapping exists solely because entity names look similar.
 
-Maintain the code lists and crosswalks needed to implement this analytical grain:
+Required acquisition checks: Fallback history: https://files.digital.nhs.uk/B6/2403F9/HES%20MAR%20data%20Apr%202018%20to%20Mar%202025.csv . Fallback 2025/26: https://files.digital.nhs.uk/F1/007ED5/HES%20MAR%202025-26%20M13.csv . Description workbook: https://files.digital.nhs.uk/74/C31B84/Hospital%20Episode%20Statistics%20Monthly%20Activity%20Report%2C%20March%202026%20-%20Dashboard%20Data%20Descriptions.xlsx . Confirm units, measure types, grain, snapshots and schema compatibility before combining.
 
-Reporting month × activity stream × published measure × available provider/geography/category × revision status. Spell, episode, admission, attendance and patient measures are distinct. If data is cumulative, derive monthly increments only within the same valid financial-year series.
+For each mapping record source/version, licence, key, definition, valid dates, uniqueness, relationship cardinality, unmatched coverage and responsible domain steward. Quantify every unmapped category/entity. Keep totals distinct from components and do not multiply fact rows through many-to-many crosswalks.
 
-Potential references are the publisher's geography/entity identifiers, category hierarchies, period definitions, units, status codes and revision markers. Include only references actually needed by the model. Register any separately downloaded official file as an additional source.
-
-## Required mapping evidence
-
-Each reference needs source/version, licence, valid-from/to dates, key uniqueness, allowed values, business meaning, owner and transformation use. For each crosswalk record source key, target key, relationship cardinality, rationale and treatment of unmapped or changed entities. Quantify 100% of unmatched keys; do not silently drop them or infer a mapping from similar names.
-
-Avoid multiplying facts when a reference is many-to-many. Keep parent totals distinct from child categories. Non-official analyst-created groupings must be labelled as project assumptions and sensitivity-tested where they affect the investigation shortlist.
-
-## Domain constraints
-
-- Activity volumes do not directly measure unmet demand, bed occupancy, waiting-time performance or capacity sufficiency.
-- HES episodes are not necessarily unique patients; do not relabel them.
-- Avoid summing cumulative snapshots, combining provisional/final series or silently bridging provider reorganisations.
-
-The domain specialist approves category meaning and comparability. The Data Engineer supplies uniqueness, join-cardinality and coverage checks before the reference enters the curated model.
+Analyst-created groupings and eligibility thresholds are labelled project assumptions. If they affect case selection, show their effect in [the scenario comparison](../../project/ACCEPTANCE_CRITERIA.md). Candidate raw field names or download references in the source register still require actual version validation.

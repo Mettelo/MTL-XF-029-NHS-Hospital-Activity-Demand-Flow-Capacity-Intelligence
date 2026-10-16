@@ -2,16 +2,16 @@
 
 NHS Hospital Activity, Demand, Flow & Capacity Pressure Intelligence
 
-**Decision:** Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
+**Decision owner:** Director of Hospital Planning & Service Transformation. **Business review:** monthly hospital activity planning review.
 
-Read in this order:
+1. [PROJECT_BRIEF.md](PROJECT_BRIEF.md): commissioned decision, scope and delivery responsibilities.
+2. [BUSINESS_CONTEXT.md](BUSINESS_CONTEXT.md): organisation problem, stakeholder actions and practical use.
+3. [DELIVERABLES.md](DELIVERABLES.md): authoritative D1–D12 and metric contracts.
+4. [ACCEPTANCE_CRITERIA.md](ACCEPTANCE_CRITERIA.md): authoritative AC1–AC12, ten domain tests and scenario rules.
+5. [GOVERNANCE.md](GOVERNANCE.md): approval roles, source/change controls and interpretation limits.
 
-1. [Project brief](PROJECT_BRIEF.md): boundaries, delivery ownership and intended users.
-2. [Business context](BUSINESS_CONTEXT.md): reporting problem, decisions and operational use.
-3. [Deliverables](DELIVERABLES.md): D1–D12 artefacts and deadlines.
-4. [Acceptance criteria](ACCEPTANCE_CRITERIA.md): measurable review gates and domain edge cases.
-5. [Governance](GOVERNANCE.md): provenance, interpretation, review and change control.
+[Data workspace](../data/README.md) · [Source evidence](../data/SOURCE_REGISTER.md) · [Submission](../submission/README.md) · [Master overview](../README.md)
 
-[Data and sources](../data/README.md) · [Submission](../submission/README.md) · [Master overview](../README.md)
+## Revision — 16 October 2026
 
-The eight-week plan is a delivery framework. Confirm team names and start/end dates at kickoff; source or scope changes require a documented decision.
+Following comparison with 011–020, this revision expands the business scenario and stakeholder ownership, separates fixed core from optional work, adds worked domain tests, records official documentation checks and removes repeated metric/role tables from guidance pages. Project-specific source/scope decisions are recorded in [the source register](../data/SOURCE_REGISTER.md). Raw-data acquisition, schema validation, licence review and freeze sign-off remain pending where explicitly stated; this is not a completed analytical delivery.

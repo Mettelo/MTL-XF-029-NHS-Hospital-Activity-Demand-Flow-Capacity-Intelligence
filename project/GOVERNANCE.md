@@ -1,49 +1,44 @@
-# MTL-XF-029 — Governance
+# MTL-XF-029 — Governance and decision controls
 
-## Engagement representation
+This is a **simulated confidential-client engagement using official public/open data**. Client and stakeholder role labels describe a fictional engagement; do not claim a real external Mettelo customer, employment, endorsement or privileged data access. No raw data is uploaded by this specification update.
 
-This is a **simulated confidential-client engagement** using official public/open data. The client label is fictional and intentionally anonymous. Do not imply a real external Mettelo customer, employment by that client, privileged access or confidential source data. Public source statistics remain public; the engagement framing does not make them confidential.
+## Authority and accountability
 
-Accurately describe verified Mettelo Project Studio participation and individual contribution. Do not claim real-client endorsement or production adoption.
+**Director of Hospital Planning & Service Transformation** owns business scope, prioritisation assumptions, accepted analytical limitations and investigation recommendations. The Mettelo review panel owns programme acceptance. Operational responsibilities are in [business context](BUSINESS_CONTEXT.md); delivery-role artefacts are in [the project brief](PROJECT_BRIEF.md).
 
-## Accountability
+The Data Governance Analyst approves source identity, metadata, licence evidence and field support. The Data Engineer owns transformations and reruns. Domain specialists approve interpretation; a distinct reviewer checks critical calculations and executes or reviews DT1–DT10. Combining delivery roles does not remove review accountability.
 
-The simulated sponsor/review panel owns scope and decision acceptance. The Business Analyst owns requirements and changes. The Data Governance Analyst owns source evidence, glossary, critical fields, licences and freeze records. The Data Engineer owns transformations and reproducibility. The BI Developer owns presentation and measure implementation. Domain specialists own interpretation; independent assurance owns test evidence. Assign named team owners at kickoff.
+## Stage gates
 
-| Domain role | Required control |
-| --- | --- |
-| NHS Activity & Performance Analyst | Approve activity units and revision status, and reconcile five month/stream measures. |
-| Hospital Planning & Operations Analyst | Write up to ten activity investigation cases with missing bed, workforce and waiting-list evidence. |
-| Clinical Data Assurance Analyst | Test cumulative resets, provider continuity and distinction between episodes and patients. |
+| Gate | Accountability | Required review |
+| --- | --- | --- |
+| G1 — scope/source, end Week 2 | Business Analyst + Data Governance Analyst + domain specialist | Approve actual period, geography, grain, required input and field support in a source-to-deliverable matrix. Official release, split-file fallback links and description resource verified; agreed combined-file identity, MAR field availability and snapshot compatibility pending. Unsupported mandatory outputs remain blocked, not quietly reclassified as completed. |
+| G2 — model/metrics, end Week 4 | Data Engineer + domain specialist + independent reviewer | Approve row accounting, keys, hierarchy, join cardinality, five source reconciliations and all core metric definitions. |
+| G3 — analytical decision review, end Week 6 | Director of Hospital Planning & Service Transformation + operational stakeholders | Compare supported streams using same-month year-on-year changes and a declared baseline index, requiring at least three contiguous comparable monthly flows for persistence. Show a recent baseline and, where valid, a pre-pandemic comparator separately. The investigation list may contain fewer than ten streams and is never padded with invented provider cases. Retain an evidence-insufficient case and a manual review route. |
+| G4 — release, end Week 8 | Simulated Mettelo panel + independent reviewer | Accept D1–D12 only after ten executed domain tests, five BI reconciliations, clean rerun evidence and resolution of all critical/high defects. |
 
-## Source and retention control
+## Data/source control
 
-Freeze the agreed HES Monthly Activity Report historical CSV for April 2018–March 2026. Inspect provisional/final status, monthly versus year-to-date measures and actual provider/geographic dimensions. Use only supported breakdowns; this is the final HES project, replacing the earlier A&E concept.
+Use the [source register](../data/SOURCE_REGISTER.md) as the authoritative evidence record. Preserve agreed URLs and explicitly label new required references, supplements and fallbacks. Record each actual file's resolved URL, retrieval UTC, release, scope, bytes, checksum and licence notices. Public access alone is not proof of unrestricted redistribution. No raw-data upload is part of this update.
 
-Before analysis, inspect each official source, record the actual version and coverage, document licence/attribution/redistribution terms and approve an immutable manifest. Source-register URLs are agreed references, not proof of successful acquisition. Do not invent a checksum, licence, retrieval date or schema. No raw data is uploaded in this master-pack build. Later redistribution requires the verified terms; where it is not permitted, retain provenance, checksums and authorised access instructions.
+Freeze input files only after the source-to-deliverable matrix passes; retain original bytes in an approved location and never overwrite a snapshot. A fallback must have a documented activation reason, compatible coverage and version-selection rule. Do not stack overlapping combined and fallback inputs.
 
-Preserve frozen inputs and metadata for reproducibility in the approved location. Never overwrite an approved snapshot. New versions require a new manifest, a change decision and an impact comparison. If a URL stops working, locate the same official archived release first and document resolution; do not silently switch cohorts.
-
-## Analytical controls
-
-**Required grain:** Reporting month × activity stream × published measure × available provider/geography/category × revision status. Spell, episode, admission, attendance and patient measures are distinct. If data is cumulative, derive monthly increments only within the same valid financial-year series.
+## Domain interpretation
 
 - Activity volumes do not directly measure unmet demand, bed occupancy, waiting-time performance or capacity sufficiency.
 - HES episodes are not necessarily unique patients; do not relabel them.
 - Avoid summing cumulative snapshots, combining provisional/final series or silently bridging provider reorganisations.
 
-Maintain field-level lineage, critical-data-element definitions, missing/suppression rules, denominator logic, hierarchy mappings, join cardinality and reconciliation evidence. Every adjustment or exclusion records affected rows/values and reason. All headline outputs must expose period, units, eligible coverage and limits.
+**Primary risk:** Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison.
 
-## Decision/model governance
+The [metric contract](DELIVERABLES.md) and [domain tests](ACCEPTANCE_CRITERIA.md) govern calculations. Thresholds/weights that are project choices must be labelled as such, with baseline and alternative scenarios; they are not official service standards. No automatic allocation or regulatory/professional certification is implied.
 
-Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses.
+## Core and extension change control
 
-Thresholds and weights are review hypotheses, not statutory standards unless explicitly supported by an official definition. Expose each component, compare at least two scenarios and retain manual-review triggers. Document evidence that would reverse or invalidate a recommendation. Optional forecasts/models require a baseline, time-appropriate holdout, leakage checks, uncertainty, error metrics, limitations and a named reviewer; core delivery must remain complete without them. Any generated text/code must be verified by the team.
+Provider/catchment comparison requires a registered provider-level source; outpatient metrics require verified MAR fields or a separately registered provisional-HES source. A&E waiting times, bed occupancy, unmet demand and capacity sufficiency are outside the activity core. Scope must not be silently shifted to another NHS series.
 
-## Repository and information controls
+Every source/scope change records requester, date, reason, old/new requirement, coverage/schema impact, affected KPIs/artefacts/tests, owner, reviewer and decision. Missing mandatory evidence blocks the dependent release; it is not resolved by relabelling a promised deliverable unavailable. Optional models need a naive baseline, appropriate holdout, leakage checks, uncertainty and a named reviewer.
 
-Use a Mettelo organisation team repository and individual member accounts. Never commit secrets, credentials, private correspondence or unnecessary personal details. Preserve source suppression; do not infer concealed identities. Check publication suitability of all screenshots and exports. Use issues, reviewed changes and a contribution log; make evidence accessible to the review panel without paid-only dependencies.
+## Reuse, information and repository controls
 
-## Change and review record
-
-Each change entry records date, requester, old/new requirement or source, reason, affected metrics/artefacts/tests, owner, reviewer and disposition. Review gates occur in Weeks 2, 4, 6 and 8. Keep a risk log with likelihood, impact, mitigation, owner and status. Only the review panel can accept final scope changes; no real regulatory or professional certification is implied.
+Never commit secrets, private correspondence or unnecessary personal details. Preserve suppression and publication notices. Check screenshots and exports for permitted publication. The team repository must be under Mettelo with individual member accounts, evidence-linked contributions and reviews. Record environment, manifest and final commit/tag so reviewers can reproduce results without paid-only access. Accurately describe verified participation; do not claim real-client employment, endorsement, operational adoption or achieved savings.

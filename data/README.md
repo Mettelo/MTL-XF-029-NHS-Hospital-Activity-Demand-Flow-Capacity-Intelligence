@@ -1,57 +1,44 @@
-# MTL-XF-029 — Data workspace
+# MTL-XF-029 — Data workspace and support gate
 
-## Required sources and cohort
+## Core contract
 
-NHS England HES Monthly Activity Report, full historical series Apr 2018–Mar 2026. It is a single 22 MB CSV, much more durable and reproducible than relying on monthly A&E file URLs.
+Retain the agreed combined April 2018–March 2026 CSV as the intended input, subject to identity validation. The official March 2026 release separately lists historical 2018/19–2024/25 and 2025/26 M13 MAR CSVs; register these as a two-file fallback if the agreed combined file cannot be validated. Core analysis is at the verified national activity-stream grain. Provider detail and outpatient fields must be confirmed in the acquired MAR schema before inclusion.
 
-Freeze the agreed HES Monthly Activity Report historical CSV for April 2018–March 2026. Inspect provisional/final status, monthly versus year-to-date measures and actual provider/geographic dimensions. Use only supported breakdowns; this is the final HES project, replacing the earlier A&E concept.
+## Optional work
 
-[Source register and exact URLs](SOURCE_REGISTER.md)
+Provider/catchment comparison requires a registered provider-level source; outpatient metrics require verified MAR fields or a separately registered provisional-HES source. A&E waiting times, bed occupancy, unmet demand and capacity sufficiency are outside the activity core. Scope must not be silently shifted to another NHS series.
 
-**Current state:** specification only. No raw datasets have been downloaded or uploaded in this build. Expected size, row count and history statements from the earlier agreement require verification against the actual files. Do not mark the cohort frozen until the manifest and metadata are complete.
+## Acquisition state
 
-## Controlled acquisition and preparation
+No raw data is uploaded by this update. Official documentation checks are recorded in [SOURCE_REGISTER.md](SOURCE_REGISTER.md). File payloads, full schemas, bytes/checksums and final reuse/freeze approvals remain pending where stated. Keep publication-level evidence distinct from acquired-file evidence.
 
-1. Read [SOURCE_REGISTER.md](SOURCE_REGISTER.md); use the exact agreed URLs and official publisher documentation.
-2. Validate that the response is the expected CSV/ODS/XLSX/ZIP rather than an error page. Inspect archive contents and sheet names where relevant.
-3. Record resolved URL, UTC retrieval, release, coverage, filename, bytes, SHA-256 and licence evidence. Log discrepancies before changing sources.
-4. Preserve original bytes in an approved immutable snapshot; later upload only where instructed and redistribution is permitted.
-5. Record source fields, types, valid values, suppression, units and publisher methodology in [metadata](metadata/README.md).
-6. Implement the analytical grain below, verify keys/cardinality and account for excluded/quarantined records.
-7. Reconcile at least five published measures and create curated outputs reproducibly in the team repository.
+## Required source-to-deliverable matrix
 
-## Analytical grain
+Before analysis, create a row per headline measure/required comparison:
+
+`requirement_id | deliverable_id | metric | core_or_extension | source_id | actual_field_or_sheet | valid_grain | coverage | unit_denominator | metadata_evidence | support_status | owner | decision`
+
+Allowed support statuses: documentation-supported; payload-verified; unsupported; optional-not-activated. “Documentation-supported” alone is insufficient for a completed data freeze. If a mandatory field is absent, block its output and resolve the source or approved scope; do not fabricate values or silently waive the requirement.
+
+## Controlled preparation
+
+1. Use registered exact URLs and inspect actual content type, archive members or sheets.
+2. Record version, resolved URL, separate retrieval timestamps, bytes, SHA-256 and licence evidence.
+3. Approve the actual cohort and scope matrix at G1.
+4. Preserve original bytes; transform into curated facts with documented types, keys, hierarchies and joins.
+5. Account for retained/excluded/quarantined rows and quantify all mapping gaps.
+6. Reconcile five source values and execute [DT1–DT10](../project/ACCEPTANCE_CRITERIA.md).
+
+## Model and measures
 
 Reporting month × activity stream × published measure × available provider/geography/category × revision status. Spell, episode, admission, attendance and patient measures are distinct. If data is cumulative, derive monthly increments only within the same valid financial-year series.
 
-## Required metric contract
+The core contract above controls conditional dimensions. Metric formulas have one authoritative home: [DELIVERABLES.md](../project/DELIVERABLES.md). Do not create another incompatible formula copy in the data README.
 
-| Metric | Required definition / calculation |
-| --- | --- |
-| Elective activity | Publisher-defined elective admissions/spells/episodes, labelled precisely with measure. |
-| Non-elective activity | Publisher-defined non-elective activity using a separate compatible category. |
-| Outpatient activity | Published attendances/appointments by available type; keep distinct from admitted care. |
-| Year-on-year activity change | 100 × (monthly activity / corresponding prior-year month − 1), with positive comparable base. |
-| Trailing twelve-month activity | Sum of twelve genuine contiguous monthly flows; never sum year-to-date cumulative values. |
-| Activity mix | 100 × compatible activity component / matching stream total; do not divide outpatient attendances by inpatient episodes. |
-| Baseline index | 100 × current activity / declared comparable baseline; label pandemic and reporting breaks. |
-| Revision/coverage flag | Available valid months and provisional/final status by stream; display missingness and provider continuity. |
+## Data areas
 
-## Mandatory quality risks
+- [Raw snapshots](raw/README.md): unmodified source bytes only when later authorised and permitted.
+- [Reference data](reference/README.md): category/entity/period mappings with version and cardinality.
+- [Metadata](metadata/README.md): manifest, dictionary, methodology, lineage and support/freeze decisions.
 
-- Activity volumes do not directly measure unmet demand, bed occupancy, waiting-time performance or capacity sufficiency.
-- HES episodes are not necessarily unique patients; do not relabel them.
-- Avoid summing cumulative snapshots, combining provisional/final series or silently bridging provider reorganisations.
-
-1. Reconcile five month/stream values and inspect cumulative versus monthly status.
-2. Test financial-year reset when deriving increments from cumulative values.
-3. Show a missing month invalidates a twelve-month total.
-4. Verify dashboard labels preserve episodes/spells/attendances and contain no inferred occupancy or A&E waiting metric.
-
-## Folder ownership
-
-- [raw](raw/README.md): unmodified approved source snapshots; guidance only at present.
-- [reference](reference/README.md): governed code lists, hierarchies and crosswalks.
-- [metadata](metadata/README.md): source notices, schema, glossary, lineage and manifest evidence.
-
-Curated data, processing code, logs and test results belong in the team delivery repository. Preserve a reproducible boundary between source inputs and generated products. Do not add personal, confidential or paid-source data.
+**Specific control:** Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison.

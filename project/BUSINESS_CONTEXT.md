@@ -1,58 +1,82 @@
 # MTL-XF-029 — Business context
 
-## Organisation and pressure
+## Organisation and decision owner
 
-**NHS Hospital Activity, Demand, Flow & Capacity Pressure Intelligence.** An NHS planning directorate needs to understand how elective/non-elective activity, admissions and outpatient demand are changing over time and which areas show sustained pressure rather than short-term variation. This will support operational and service-planning reviews.
+**Simulated client:** Confidential NHS Hospital Planning & Service Transformation Directorate. **Accountable executive:** Director of Hospital Planning & Service Transformation. **Review cadence:** monthly hospital activity planning review.
 
-The simulated sponsor, Confidential NHS Hospital Planning & Service Transformation Directorate, must decide where to direct limited analytical and service-review attention. Its starting problem is an inconsistent view of nhs hospital activity, demand, flow & capacity pressure intelligence: totals, rates, periods and categories can lead users to different conclusions without a common definition. The engagement supplies an evidence base; it does not assume the client has already suffered a quantified failure.
+This fictional directorate/board is an engagement scenario, not an assertion of a real client's circumstances. The source data remains official public/open data.
 
-## Current process and its consequences
+## Business problem
 
-Analysts retrieve official tables independently, prepare local summaries and discuss headline differences in management meetings. Without a shared cohort and definition register, revisions, incomparable denominators and missing coverage can pass into recommendations. The consequence is an investigation shortlist that cannot be explained or reproduced, rather than a verified estimate of financial loss.
+The planning directorate must decide which activity streams warrant investigation when volumes differ from prior periods. Episodes, admissions and outpatient attendances are not interchangeable, and monthly values may be confused with year-to-date snapshots. Rising activity could reflect throughput, coding, case mix or demand; it does not on its own prove that bed capacity is insufficient.
 
-## Required decision process
+## Why the current process is insufficient
 
-1. Confirm the reporting cohort and available dimensions.
-2. Review governed metrics and quality exceptions before interpreting patterns.
-3. Compare like-for-like trends and segment evidence against the questions below.
-4. Challenge at least two prioritisation scenarios and document changes in shortlisted cases.
-5. Assign a responsible role, evidence-gathering action and review point to every proposed investigation.
+The current scenario relies on separately prepared reports without a common source/metric contract. The material failure to prevent is specific: Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison.
 
-**Decision:** Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
+This creates uncertainty over which cases need investigation and which comparisons should be rejected. No quantified loss, backlog, budget deficit or service failure is invented as a client fact.
 
-## Business questions and evidence
+## Stakeholders and decisions
 
-| Question | Expected evidence |
+| Simulated stakeholder | Decision / review responsibility |
 | --- | --- |
-| How have elective and non-elective activity changed across comparable months? | Reconciled trend/segment table and diagnostic chart with period, grain, denominator and source references. |
-| How does outpatient activity differ from admitted care? | Reconciled trend/segment table and diagnostic chart with period, grain, denominator and source references. |
-| Where are sustained changes visible relative to a declared baseline? | Segment or coverage assessment stating which comparisons are supported. |
-| What do pandemic effects, revisions and provider changes do to the interpretation? | Sensitivity or scope audit showing what changes the interpretation. |
-| What additional beds, waiting-list and workforce evidence is required before a capacity decision? | Investigation plan with missing evidence, owner and decision-review trigger. |
+| Director of Hospital Planning & Service Transformation | Accountable for scope, investigation priorities, accepted limitations and final business sign-off. |
+| Head of Elective & Non-elective Planning | Review activity change and specify pathway/capacity evidence requests. |
+| Outpatient Transformation Lead | Interpret appointment/attendance measures separately from inpatient activity. |
+| Hospital Information Steward | Approve HES/MAR definitions, provisional status and geographic coverage. |
+| Operational Assurance & Finance Leads | Challenge capacity claims and define additional workforce, bed and cost evidence. |
 
-## Intended management use
+## Commissioned decision
+
+Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
+
+## Practical management use case
+
+At the monthly meeting, the Director reviews a three-month sustained change in elective or non-elective activity and compares it with the declared baseline. The Information Steward checks whether the measure is a true monthly flow and whether a revision explains the change. The planning team then requests waiting-list, workforce or bed evidence before diagnosing a capacity constraint. Provider-specific recommendations appear only if the approved file actually contains valid provider detail.
+
+## Current-to-target workflow
+
+1. **Before review:** analyst registers the approved files, coverage and definitions; steward checks the cohort and unresolved exceptions.
+2. **At review:** Director of Hospital Planning & Service Transformation opens the overview, then inspects diagnostics and the underlying eligible population before considering a case.
+3. **Challenge:** the relevant stakeholder compares the alternative scenario and asks whether the signal survives missingness, comparability and denominator checks.
+4. **Action:** each accepted case records investigation type, responsible service role, missing evidence, next review and what finding would reverse the recommendation.
+5. **Follow-up:** the next monthly hospital activity planning review records evidence received and the decision, without claiming the analytical signal itself caused an improvement.
+
+## Required analytical response
 
 - Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status.
 - Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 - Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses.
 
-The BI executive view starts with the commissioned question, reporting period and coverage. Users inspect a diagnostic view before reading the investigation shortlist. Every case records the signal, its magnitude, uncertainty, alternative explanations, evidence still needed and a next-step owner. The final briefing must explain at least one case where the evidence is insufficient for action.
+## Measurable project outcomes
 
-## Measures of project value
+1. Every required output states its precise activity unit and whether the input is monthly or cumulative.
+2. National core results remain usable without provider data or an outpatient extension.
+3. Every capacity hypothesis identifies the missing bed, workforce, waiting-list or case-mix evidence.
 
-Success means a repeatable review with five supported findings, five reconciled dashboard measures, two compared decision scenarios, ten UAT scenarios and a reproducible handover. Teams may propose a future operational baseline and improvement target, but must label these as proposed measures rather than achieved benefits. No observed savings or service improvement can be claimed from this simulated engagement alone.
+## Proposed benefit monitoring
 
-## Interpretation and evidence limits
+At kickoff, record a baseline review process and propose measures for: time to regenerate the agreed evidence pack; proportion of agenda recommendations with a complete evidence chain; and proportion of accepted investigations with a role owner and next review. The target for recommendation traceability and ownership is 100%; regeneration time is measured during the independent rerun, with no fabricated pre-project baseline or claimed reduction. These are proposed management measures, not achieved service benefits.
+
+## Scope and evidence limits
+
+**Core:** Retain the agreed combined April 2018–March 2026 CSV as the intended input, subject to identity validation. The official March 2026 release separately lists historical 2018/19–2024/25 and 2025/26 M13 MAR CSVs; register these as a two-file fallback if the agreed combined file cannot be validated. Core analysis is at the verified national activity-stream grain. Provider detail and outpatient fields must be confirmed in the acquired MAR schema before inclusion.
+
+**Extensions:** Provider/catchment comparison requires a registered provider-level source; outpatient metrics require verified MAR fields or a separately registered provisional-HES source. A&E waiting times, bed occupancy, unmet demand and capacity sufficiency are outside the activity core. Scope must not be silently shifted to another NHS series.
 
 - Activity volumes do not directly measure unmet demand, bed occupancy, waiting-time performance or capacity sufficiency.
 - HES episodes are not necessarily unique patients; do not relabel them.
 - Avoid summing cumulative snapshots, combining provisional/final series or silently bridging provider reorganisations.
 
-## Dependencies and risks
+## Risks, mitigations and escalation
 
-- Source/schema validation may narrow the scope: record an explicit impact decision rather than inventing fields.
-- Data revisions may alter findings: preserve immutable source manifests and rerun comparisons.
-- Small, suppressed or non-comparable segments may distort ordering: apply eligibility rules and show excluded cases.
-- Local context or operational records may be missing: attach an evidence request to the relevant recommendation.
+- **Interpretation risk:** Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison. The domain specialist reviews definitions and DT1–DT10 before sign-off.
+- **Source risk:** Official release, split-file fallback links and description resource verified; agreed combined-file identity, MAR field availability and snapshot compatibility pending. The steward records unresolved items at G1; mandatory gaps block dependent outputs.
+- **Decision risk:** prioritisation assumptions may affect which cases appear. Show alternative scenarios, excluded cases and evidence that could change a recommendation.
+- **Delivery risk:** limited time or skills can leave undocumented manual steps. Assign a second-member rerun and retain contribution/review evidence throughout the eight weeks.
 
-The domain roles in [the brief](PROJECT_BRIEF.md) own interpretation; the simulated review panel owns decisions.
+## Evidence chain
+
+Stakeholder requirement → registered source and valid cohort → governed field/metric → tested transformation → reconciled finding → scenario reason code → investigation owner/evidence request → simulated UAT and sign-off.
+
+Every major recommendation must be traceable through this chain.
