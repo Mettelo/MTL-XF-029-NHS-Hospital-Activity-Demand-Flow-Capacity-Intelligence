@@ -6,9 +6,17 @@ This is a **simulated confidential-client engagement using official public/open 
 
 ## Business problem and commission
 
-The planning directorate must decide which activity streams warrant investigation when volumes differ from prior periods. Episodes, admissions and outpatient attendances are not interchangeable, and monthly values may be confused with year-to-date snapshots. Rising activity could reflect throughput, coding, case mix or demand; it does not on its own prove that bed capacity is insufficient.
+The simulated hospital planning and service-transformation directorate prepares a monthly activity review for elective and non-elective planning leads. Its first decision is which supported activity streams need a deeper operational evidence request before any capacity response is proposed.
+
+The Director of Hospital Planning & Service Transformation needs to decide which changes in hospital activity warrant a planning investigation. Separate reports can mix episodes, admissions, optional outpatient measures and year-to-date snapshots, making it difficult to tell whether a reported increase is sustained, comparable or explained by revisions.
+
+The consequence is an unclear route from a headline activity movement to the next operational question. Leaders may discuss extra capacity before establishing whether the signal reflects throughput, reporting or case mix. The commission is a verified national activity-stream review that supports a focused request for waiting-list, workforce, bed or pathway evidence. Provider-level action remains conditional on an approved provider source.
 
 > Which hospital activity streams show sustained change requiring planning investigation, and what capacity, waiting-list and workforce evidence is still needed to diagnose service pressure?
+
+**Required management handover:** A monthly planning pack containing verified stream trajectories, baseline comparisons, unit/revision diagnostics and a hypothesis-to-evidence action register. Each case must distinguish the observed activity change, possible explanation and additional operational dataset needed to test it.
+
+See [the management use case](BUSINESS_CONTEXT.md#practical-management-use-case) for how the review meeting uses this evidence.
 
 ## Core deliverable boundary
 

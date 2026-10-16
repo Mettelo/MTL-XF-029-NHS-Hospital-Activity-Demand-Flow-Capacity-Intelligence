@@ -6,15 +6,19 @@
 
 This fictional directorate/board is an engagement scenario, not an assertion of a real client's circumstances. The source data remains official public/open data.
 
+## Business setting and immediate planning need
+
+The simulated hospital planning and service-transformation directorate prepares a monthly activity review for elective and non-elective planning leads. Its first decision is which supported activity streams need a deeper operational evidence request before any capacity response is proposed.
+
 ## Business problem
 
-The planning directorate must decide which activity streams warrant investigation when volumes differ from prior periods. Episodes, admissions and outpatient attendances are not interchangeable, and monthly values may be confused with year-to-date snapshots. Rising activity could reflect throughput, coding, case mix or demand; it does not on its own prove that bed capacity is insufficient.
+The Director of Hospital Planning & Service Transformation needs to decide which changes in hospital activity warrant a planning investigation. Separate reports can mix episodes, admissions, optional outpatient measures and year-to-date snapshots, making it difficult to tell whether a reported increase is sustained, comparable or explained by revisions.
+
+The consequence is an unclear route from a headline activity movement to the next operational question. Leaders may discuss extra capacity before establishing whether the signal reflects throughput, reporting or case mix. The commission is a verified national activity-stream review that supports a focused request for waiting-list, workforce, bed or pathway evidence. Provider-level action remains conditional on an approved provider source.
 
 ## Why the current process is insufficient
 
-The current scenario relies on separately prepared reports without a common source/metric contract. The material failure to prevent is specific: Unconfirmed combined-file provenance or cumulative/snapshot handling could invalidate every downstream activity comparison.
-
-This creates uncertainty over which cases need investigation and which comparisons should be rejected. No quantified loss, backlog, budget deficit or service failure is invented as a client fact.
+The activity pack supplies volumes, but the planning discussion asks why they moved and what response is needed. If the units, monthly/cumulative basis and publication status are hidden, even the starting comparison is uncertain. The replacement must validate the MAR inputs and use a declared baseline before presenting a sustained-change case.
 
 ## Stakeholders and decisions
 
@@ -32,15 +36,15 @@ Which hospital activity streams show sustained change requiring planning investi
 
 ## Practical management use case
 
-At the monthly meeting, the Director reviews a three-month sustained change in elective or non-elective activity and compares it with the declared baseline. The Information Steward checks whether the measure is a true monthly flow and whether a revision explains the change. The planning team then requests waiting-list, workforce or bed evidence before diagnosing a capacity constraint. Provider-specific recommendations appear only if the approved file actually contains valid provider detail.
+At the monthly review, the planning lead opens an elective or non-elective stream with at least three comparable monthly-flow observations showing a sustained change. The Information Steward verifies the unit, publication status and any cumulative-to-monthly derivation, then the lead compares the declared recent or pre-pandemic baseline.
+
+The Director records an activity finding and a separate planning hypothesis. A possible capacity concern becomes a request for bed, workforce and waiting-list evidence with an operational owner; a reporting discontinuity becomes a data-resolution action. The core pack remains national and usable without provider or outpatient extensions. It does not convert activity volumes into a staffing or bed requirement.
 
 ## Current-to-target workflow
 
-1. **Before review:** analyst registers the approved files, coverage and definitions; steward checks the cohort and unresolved exceptions.
-2. **At review:** Director of Hospital Planning & Service Transformation opens the overview, then inspects diagnostics and the underlying eligible population before considering a case.
-3. **Challenge:** the relevant stakeholder compares the alternative scenario and asks whether the signal survives missingness, comparability and denominator checks.
-4. **Action:** each accepted case records investigation type, responsible service role, missing evidence, next review and what finding would reverse the recommendation.
-5. **Follow-up:** the next monthly hospital activity planning review records evidence received and the decision, without claiming the analytical signal itself caused an improvement.
+**Target management handover:** A monthly planning pack containing verified stream trajectories, baseline comparisons, unit/revision diagnostics and a hypothesis-to-evidence action register. Each case must distinguish the observed activity change, possible explanation and additional operational dataset needed to test it.
+
+The meeting's decision record must contain: the selected case and reporting period; the source-backed finding; the decision to investigate, watch, clarify or close; the responsible stakeholder role; the specific additional evidence requested; and the next review point. Add the evidence that would reverse or narrow the recommendation. A watchlist or no-action conclusion is valid when supported; do not fill the shortlist simply to reach ten cases.
 
 ## Required analytical response
 
@@ -56,7 +60,9 @@ At the monthly meeting, the Director reviews a three-month sustained change in e
 
 ## Proposed benefit monitoring
 
-At kickoff, record a baseline review process and propose measures for: time to regenerate the agreed evidence pack; proportion of agenda recommendations with a complete evidence chain; and proportion of accepted investigations with a role owner and next review. The target for recommendation traceability and ownership is 100%; regeneration time is measured during the independent rerun, with no fabricated pre-project baseline or claimed reduction. These are proposed management measures, not achieved service benefits.
+Measure whether every planning case states the correct activity unit and baseline and separates its finding from its capacity hypothesis; target 100%. In simulated UAT, require the user to choose the next evidence request rather than infer beds from volume alone. Reduced waits or improved flow cannot be claimed from this activity analysis.
+
+Record the preparation and review baseline at kickoff, then measure evidence-pack regeneration during the independent rerun. No pre-project time saving or achieved operational benefit is assumed. The eight-week engagement is assessed on the usability and traceability of the decision pack; later service outcomes require separate follow-up.
 
 ## Scope and evidence limits
 

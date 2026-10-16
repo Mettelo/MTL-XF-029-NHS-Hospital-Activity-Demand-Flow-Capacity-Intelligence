@@ -10,9 +10,15 @@
 
 > This is a **simulated confidential-client engagement using official public/open data**. Client and stakeholder role labels describe a fictional engagement; do not claim a real external Mettelo customer, employment, endorsement or privileged data access. No raw data is uploaded by this specification update.
 
+## Business setting
+
+The simulated hospital planning and service-transformation directorate prepares a monthly activity review for elective and non-elective planning leads. Its first decision is which supported activity streams need a deeper operational evidence request before any capacity response is proposed.
+
 ## Business problem
 
-The planning directorate must decide which activity streams warrant investigation when volumes differ from prior periods. Episodes, admissions and outpatient attendances are not interchangeable, and monthly values may be confused with year-to-date snapshots. Rising activity could reflect throughput, coding, case mix or demand; it does not on its own prove that bed capacity is insufficient.
+The Director of Hospital Planning & Service Transformation needs to decide which changes in hospital activity warrant a planning investigation. Separate reports can mix episodes, admissions, optional outpatient measures and year-to-date snapshots, making it difficult to tell whether a reported increase is sustained, comparable or explained by revisions.
+
+The consequence is an unclear route from a headline activity movement to the next operational question. Leaders may discuss extra capacity before establishing whether the signal reflects throughput, reporting or case mix. The commission is a verified national activity-stream review that supports a focused request for waiting-list, workforce, bed or pathway evidence. Provider-level action remains conditional on an approved provider source.
 
 ## Commissioned decision
 
@@ -20,9 +26,13 @@ The planning directorate must decide which activity streams warrant investigatio
 
 ## Practical use
 
-At the monthly meeting, the Director reviews a three-month sustained change in elective or non-elective activity and compares it with the declared baseline. The Information Steward checks whether the measure is a true monthly flow and whether a revision explains the change. The planning team then requests waiting-list, workforce or bed evidence before diagnosing a capacity constraint. Provider-specific recommendations appear only if the approved file actually contains valid provider detail.
+At the monthly review, the planning lead opens an elective or non-elective stream with at least three comparable monthly-flow observations showing a sustained change. The Information Steward verifies the unit, publication status and any cumulative-to-monthly derivation, then the lead compares the declared recent or pre-pandemic baseline.
 
-The full [business context](project/BUSINESS_CONTEXT.md) names operational stakeholders, decisions, risks and proposed benefit measures.
+The Director records an activity finding and a separate planning hypothesis. A possible capacity concern becomes a request for bed, workforce and waiting-list evidence with an operational owner; a reporting discontinuity becomes a data-resolution action. The core pack remains national and usable without provider or outpatient extensions. It does not convert activity volumes into a staffing or bed requirement.
+
+**Management handover:** A monthly planning pack containing verified stream trajectories, baseline comparisons, unit/revision diagnostics and a hypothesis-to-evidence action register. Each case must distinguish the observed activity change, possible explanation and additional operational dataset needed to test it.
+
+The full [business context](project/BUSINESS_CONTEXT.md) sets out stakeholders, decisions, evidence limits and proposed benefit measures.
 
 ## What must be delivered
 
