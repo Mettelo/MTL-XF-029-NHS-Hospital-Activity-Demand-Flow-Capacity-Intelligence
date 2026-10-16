@@ -44,7 +44,7 @@ At the monthly meeting, the Director reviews a three-month sustained change in e
 
 ## Required analytical response
 
-- Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status.
+- Build separate verified elective and non-elective trajectories with source-specific units and reporting status; include outpatient trajectories only when the validated MAR schema supports them or a compatible official extension is registered.
 - Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 - Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses.
 

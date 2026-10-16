@@ -26,7 +26,7 @@ The full [business context](project/BUSINESS_CONTEXT.md) names operational stake
 
 ## What must be delivered
 
-1. Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status.
+1. Build separate verified elective and non-elective trajectories with source-specific units and reporting status; include outpatient trajectories only when the validated MAR schema supports them or a compatible official extension is registered.
 2. Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 3. Create up to ten stream/provider investigation cases only where provider data exists, otherwise stream-level cases; separate activity evidence from capacity hypotheses.
 

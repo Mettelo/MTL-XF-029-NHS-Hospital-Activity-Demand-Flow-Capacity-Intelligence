@@ -50,7 +50,7 @@ Implement the 8 metric contracts below; distinguish unconditional core metrics f
 
 **Due:** Week 5 · **Location:** `analysis/; docs/06-analysis/` · **Owner:** Domain analyst
 
-Build separate elective, non-elective and outpatient trajectories with source-specific units and reporting status. Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
+Build separate verified elective and non-elective trajectories with source-specific units and reporting status; include outpatient trajectories only when the validated MAR schema supports them or a compatible official extension is registered. Compare recent activity with a declared pre-pandemic and/or recent baseline; identify sustained changes over at least three months.
 
 **Pass evidence:** At least five supported findings answer the five questions or document a genuine evidence gap; each includes magnitude, scope, comparison and limitation.
 
