@@ -48,3 +48,7 @@ Responsibilities are defined once in [the project brief](../project/PROJECT_BRIE
 3. Every capacity hypothesis identifies the missing bed, workforce, waiting-list or case-mix evidence.
 
 Keep actual source support and mandatory blockers visible. Preserve raw/curated separation, manifests and every manual adjustment in code or an auditable record. Never commit credentials, prohibited personal information or invented approvals. Retain the simulated-client declaration in public descriptions.
+
+## Team organisation
+
+The recommended team size is **3–5 people**. Delivery roles describe responsibilities, not separate positions: members can combine complementary business analysis, governance, engineering, analysis/modelling, BI and domain responsibilities. Assign a named owner to each deliverable and use a different team member to review critical calculations and perform the final clean rerun.

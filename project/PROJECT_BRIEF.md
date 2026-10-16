@@ -2,7 +2,7 @@
 
 This is a **simulated confidential-client engagement using official public/open data**. Client and stakeholder role labels describe a fictional engagement; do not claim a real external Mettelo customer, employment, endorsement or privileged data access. No raw data is uploaded by this specification update.
 
-**Client:** Confidential NHS Hospital Planning & Service Transformation Directorate. **Decision owner:** Director of Hospital Planning & Service Transformation. **Team:** 6–8. **Duration:** 8 weeks. **Review:** monthly hospital activity planning review.
+**Client:** Confidential NHS Hospital Planning & Service Transformation Directorate. **Decision owner:** Director of Hospital Planning & Service Transformation. **Team:** 3–5. **Duration:** 8 weeks. **Review:** monthly hospital activity planning review.
 
 ## Business problem and commission
 
@@ -74,3 +74,7 @@ Compare supported streams using same-month year-on-year changes and a declared b
 | G4 — release, end Week 8 | Simulated Mettelo panel + independent reviewer | Accept D1–D12 only after ten executed domain tests, five BI reconciliations, clean rerun evidence and resolution of all critical/high defects. |
 
 D1–D12 are defined in [deliverables](DELIVERABLES.md). AC1–AC12 and DT1–DT10 are defined in [acceptance criteria](ACCEPTANCE_CRITERIA.md). No real production deployment, automatic funding/service allocation, private-client data or paid-source dependency is required.
+
+## Team organisation
+
+The recommended team size is **3–5 people**. Delivery roles describe responsibilities, not separate positions: members can combine complementary business analysis, governance, engineering, analysis/modelling, BI and domain responsibilities. Assign a named owner to each deliverable and use a different team member to review critical calculations and perform the final clean rerun.
